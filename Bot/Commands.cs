@@ -36,14 +36,15 @@ namespace paracordbot
                 footer.WithIconUrl("https://cdn.discordapp.com/embed/avatars/0.png");
             })
             .WithThumbnailUrl("https://pbs.twimg.com/profile_images/1381266030866104325/v7ENidXZ_400x400.jpg")
-            .WithAuthor
-           (
-              author    
+            .WithAuthor(author 
+                
                 =>
-                {
-                  author.WithName("astr0").WithUrl("https://twitter.com/0xastr0").WithIconUrl("https://pbs.twimg.com/profile_images/1382237973459128320/zkaF5x4Y_400x400.jpg");
-                }
-           )
+            {
+                author
+                    .WithName("astr0")
+                    .WithUrl("https://twitter.com/0xastr0")
+                    .WithIconUrl("https://pbs.twimg.com/profile_images/1382237973459128320/zkaF5x4Y_400x400.jpg");
+            })
 
             .AddField("!cmds", "Loads help menu and supported commands.")
             .AddField("!about", "Loads a brief info about the bot.")
@@ -107,13 +108,13 @@ namespace paracordbot
                 .WithUrl("https://discordapp.com")
                 .WithColor(new Color(0x82AEA2))
                 .WithTimestamp(DateTimeOffset.FromUnixTimeMilliseconds(1618430172179))
-                .AddField("Hex2CBytesArray", "Convert Hex Bytes To A C Byte Array")
+                .AddField("Hex2CByteArray", "Convert Hex Bytes To A C Byte Array")
                 .AddField("Hex2C#ByteArray", "Convert Hex Bytes To A C# Byte Array")
                 .AddField("Hex2RustVec", "Convert Hex Bytes To A Rust !vec")
-                .AddField("Hex2Bin", "Convert Hex To Binary")
-                .AddField("Bin2Hex", "Convert Binary To Hex")
-                .AddField("Dec2Hex", "Convert Decimal To Hex")
-                .AddField("Hex2Dec", "Convert Hex To Decimal")
+                .AddField("hex2bin", "Convert Hex To Binary")
+                .AddField("bin2hex", "Convert Binary To Hex")
+                .AddField("dec2hex", "Convert Decimal To Hex")
+                .AddField("hex2dec", "Convert Hex To Decimal")
                 .AddField("b64d", "Decode Base64 To Ascii")
                 .AddField("b64e", "Encode String To Base64")
                 .AddField("ascii2hex", "Converts Ascii Text To Hex")
@@ -125,9 +126,9 @@ namespace paracordbot
             
             switch (util)
             {
-                case "Hex2CBytesArray": { await ReplyAsync("`char shellcode[] = {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ", "")))) + "};`"); break; }
-                case "Hex2C#ByteArray": { await ReplyAsync("`byte[] shellcode = new byte[] {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ", "")))) + "};`"); break; }
-                case "Hex2RustVec": { await ReplyAsync("`let shellcode = vec![" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ", "")))) + "];`"); break; }
+                case "Hex2CByteArray": { await ReplyAsync("`char shellcode[] = {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "};`"); break; }
+                case "Hex2C#ByteArray": { await ReplyAsync("`byte[] shellcode = new byte[] {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "};`"); break; }
+                case "Hex2RustVec": { await ReplyAsync("`let shellcode = vec![" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "];`"); break; }
                 case "hex2bin": {await ReplyAsync($"`{Utilities.Hex2Bin(option)}`"); break; }
                 case "bin2hex": { await ReplyAsync($"`{Utilities.Bin2Hex(option)}`"); break; }
                 case "dec2bin": { await ReplyAsync($"`{Utilities.Dec2Bin(option)}`"); break; }
@@ -149,7 +150,9 @@ namespace paracordbot
             string[] ops = new string[instructions.Length];
 
             for (int i = 0; i < instructions.Length; i++)
-                ops[i] = string.Concat("", instructions[i].Bytes[i] + " " + instructions[i].Mnemonic + " " + instructions[i].Operand);
+            {
+                ops[i] = string.Concat("", instructions[i].Mnemonic + " " + instructions[i].Operand);
+            }
 
             await ReplyAsync($"```c\n{string.Join("\n", ops)}```");
         }
@@ -157,9 +160,7 @@ namespace paracordbot
         public async Task Disasamx86x64x16( ArchitectureMode mode, [Remainder] string hex = null)
         {
             Disassembler.Translator.IncludeBinary = true;
-
             var disasm = new Disassembler(Utilities.HexStringToByteArray(hex.ToString().Replace("\\x","").Replace("0x","").Replace(" ", "")), mode, 0, true);
-
             await ReplyAsync($"```c\n{string.Join("\n", disasm.Disassemble())}```");
         }
 
