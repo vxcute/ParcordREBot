@@ -1,13 +1,7 @@
 ﻿using System;
 using Gee.External.Capstone;
 using Gee.External.Capstone.Arm64;
-using Gee.External.Capstone.Arm;
 using Gee.External.Capstone.X86;
-using Gee.External.Capstone.Mips;
-using Gee.External.Capstone.PowerPc;
-using Gee.External.Capstone.M68K;
-using Gee.External.Capstone.XCore;
-using Iced.Intel;
 using System.Linq;
 using System.Collections.Generic;
 
