@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Gee.External.Capstone.Arm64;
-using Discord;
-using Discord.Commands;
-using Gee.External.Capstone;
-using SharpDisasm.Translators;
-using SharpDisasm;
-using SharpDisasm.Udis86;
-using Discord.WebSocket;
-using System.Net.Http;
-using paracordbot.Bot.Utilities;
 using System.IO;
 
 namespace paracordbot.Bot.Utilities
