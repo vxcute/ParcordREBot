@@ -12,7 +12,6 @@ using SharpDisasm;
 using SharpDisasm.Udis86;
 using Discord.WebSocket;
 using System.Net.Http;
-using static Emojies.Emojs;
 using paracordbot.Bot.Utilities;
 using System.IO;
 
