@@ -150,9 +150,7 @@ namespace paracordbot
             string[] ops = new string[instructions.Length];
 
             for (int i = 0; i < instructions.Length; i++)
-            {
                 ops[i] = string.Concat("", instructions[i].Bytes[i] + " " + instructions[i].Mnemonic + " " + instructions[i].Operand);
-            }
 
             await ReplyAsync($"```c\n{string.Join("\n", ops)}```");
         }
