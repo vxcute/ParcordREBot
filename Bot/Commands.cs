@@ -36,12 +36,14 @@ namespace paracordbot
                 footer.WithIconUrl("https://cdn.discordapp.com/embed/avatars/0.png");
             })
             .WithThumbnailUrl("https://pbs.twimg.com/profile_images/1381266030866104325/v7ENidXZ_400x400.jpg")
-            .WithAuthor(
-            author    
+            .WithAuthor
+           (
+              author    
                 =>
-            {
-                author.WithName("astr0").WithUrl("https://twitter.com/0xastr0").WithIconUrl("https://pbs.twimg.com/profile_images/1382237973459128320/zkaF5x4Y_400x400.jpg");
-            })
+                {
+                  author.WithName("astr0").WithUrl("https://twitter.com/0xastr0").WithIconUrl("https://pbs.twimg.com/profile_images/1382237973459128320/zkaF5x4Y_400x400.jpg");
+                }
+           )
 
             .AddField("!cmds", "Loads help menu and supported commands.")
             .AddField("!about", "Loads a brief info about the bot.")
