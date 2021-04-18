@@ -115,7 +115,7 @@ namespace paracordbot
                 .AddField("bin2hex", "Convert Binary To Hex")
                 .AddField("dec2hex", "Convert Decimal To Hex")
                 .AddField("bin2dec", "Convert Binary To Decimal")
-                .AddField("dec2bin", "Convert Decial To Binary")
+                .AddField("dec2bin", "Convert Decimal To Binary")
                 .AddField("hex2dec", "Convert Hex To Decimal")
                 .AddField("b64d", "Decode Base64 To Ascii")
                 .AddField("b64e", "Encode String To Base64")
