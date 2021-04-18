@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,7 +60,7 @@ namespace paracordbot
             var builder = new EmbedBuilder()
             .WithTitle("Thanks For Inviting Me :smile:")
             .WithColor(new Color(0x744BF8))
-            .WithDescription("[Add The Bot To Your RE Server](https://discord.com/oauth2/authorize?client_id=830233244318302218&scope=bot)")
+            .WithDescription("[Add The Bot To Your RE Server](https://discord.com/oauth2/authorize?client_id=830230742877077565&scope=bot)")
             .WithColor(new Color(0x744BF8))
             .WithTimestamp(DateTimeOffset.FromUnixTimeMilliseconds(1618602756303))
             .WithFooter(footer => {
@@ -114,6 +114,8 @@ namespace paracordbot
                 .AddField("hex2bin", "Convert Hex To Binary")
                 .AddField("bin2hex", "Convert Binary To Hex")
                 .AddField("dec2hex", "Convert Decimal To Hex")
+                .AddField("bin2dec", "Convert Binary To Decimal")
+                .AddField("dec2bin", "Convert Decial To Binary")
                 .AddField("hex2dec", "Convert Hex To Decimal")
                 .AddField("b64d", "Decode Base64 To Ascii")
                 .AddField("b64e", "Encode String To Base64")
@@ -126,9 +128,9 @@ namespace paracordbot
             
             switch (util)
             {
-                case "Hex2CByteArray": { await ReplyAsync("`char shellcode[] = {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "};`"); break; }
-                case "Hex2C#ByteArray": { await ReplyAsync("`byte[] shellcode = new byte[] {" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "};`"); break; }
-                case "Hex2RustVec": { await ReplyAsync("`let shellcode = vec![" + string.Join(",", string.Join(",", BytesToByteArray(option.Replace(" ","")))) + "];`"); break; }
+                case "Hex2CByteArray": { await ReplyAsync("`char shellcode[] = {" + string.Join(",", BytesToByteArray(option.Replace(" ",""))) + "};`"); break; }
+                case "Hex2C#ByteArray": { await ReplyAsync("`byte[] shellcode = new byte[] {" + string.Join(",", BytesToByteArray(option.Replace(" ",""))) + "};`"); break; }
+                case "Hex2RustVec": { await ReplyAsync("`let shellcode = vec![" + string.Join(",", BytesToByteArray(option.Replace(" ",""))) + "];`"); break; }
                 case "hex2bin": {await ReplyAsync($"`{Utilities.Hex2Bin(option)}`"); break; }
                 case "bin2hex": { await ReplyAsync($"`{Utilities.Bin2Hex(option)}`"); break; }
                 case "dec2bin": { await ReplyAsync($"`{Utilities.Dec2Bin(option)}`"); break; }
@@ -145,15 +147,10 @@ namespace paracordbot
         public async Task DisasmArm64Cmd([Remainder] string hex = null)
         {
             byte[] bytes = Utilities.HexStringToByteArray(hex.ToString().Replace("0x","").Replace(" ", ""));
-            Console.WriteLine(string.Join("", bytes));
             Arm64Instruction[] instructions = new DisassemblerEx().DisasmArm64(bytes);
             string[] ops = new string[instructions.Length];
-
             for (int i = 0; i < instructions.Length; i++)
-            {
                 ops[i] = string.Concat("", instructions[i].Mnemonic + " " + instructions[i].Operand);
-            }
-
             await ReplyAsync($"```c\n{string.Join("\n", ops)}```");
         }
 
