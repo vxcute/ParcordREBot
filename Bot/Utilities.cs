@@ -12,7 +12,7 @@ namespace paracordbot.Bot.Utilities
         public static readonly Func<string, string> Hex2Bin = (Hex) => { string Bin = string.Empty; Bin = Convert.ToString(Convert.ToInt64(Hex, 16), 2); return Bin; };
         public static readonly Func<string, string> Bin2Hex = (Bin) => { string Hex = string.Empty; Hex = Convert.ToString(Convert.ToInt64(Bin, 2), 16); return Hex; };
         public static readonly Func<string, string> Dec2Bin = (Dec) => { string Bin = string.Empty; Bin = Convert.ToString(Convert.ToInt64(Dec, 10), 2); return Bin; };
-        public static readonly Func<string, string> Bin2Dec = (Bin) => { string Dec = string.Empty; Bin = Convert.ToString(Convert.ToInt64(Dec, 2), 10); return Dec; };
+        public static readonly Func<string, string> Bin2Dec = (Bin) => { string dec = Convert.ToInt64(Bin, 2).ToString(); return dec; };
         public static readonly Func<string, string> Base64Decode = (B64) => { string decoded = string.Empty; decoded = Encoding.UTF8.GetString(Convert.FromBase64String(B64)); return decoded; };
         public static readonly Func<string, string> Ascii2Hex = (Ascii) => string.Join(",", Ascii.Select(h => $"0x{(int)h:X}"));
         public static readonly Func<string, int> Hex2Dec = (Hex) => { int Dec = int.Parse(Hex, System.Globalization.NumberStyles.HexNumber); return Dec; };
