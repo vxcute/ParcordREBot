@@ -11,9 +11,9 @@ Libraries Used:
 Building:
 ---------
 
-Windows-x64: dotnet publish ParacordREBot.sln -r win-x64 --self-contained true -o windows 
+Windows-x64: dotnet publish `ParacordREBot.sln -r win-x64 --self-contained true -o windows` 
 
-Linux-x64: dotnet publish ParacordREBot.sln -r linux-x64 --self-contained true -o linux
+Linux-x64: dotnet publish `ParacordREBot.sln -r linux-x64 --self-contained true -o linux`
 
 For x86 Change `x64` to `x86`
 
