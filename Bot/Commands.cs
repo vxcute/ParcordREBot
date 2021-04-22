@@ -78,14 +78,14 @@ namespace paracordbot
         [Command("cmds")]
         public async Task HelpCommand()
         {
-            await ReplyAsync("**Usage: !disasm {arch}(x64, x86,x16, arm64) {opcodes}**");
+            await ReplyAsync("**Usage: !disasm {arch}(x64, x86,x16) {opcodes}**");
         }
 
         [Command("disasm")]
         public async Task DisasmCommand(string arch, [Remainder] string hex = null)
         {
             if (hex == null || arch == null)
-                await ReplyAsync("**Usage: !disasm {arch}(x64, x86, x16, arm64) {opcodes}**");
+                await ReplyAsync("**Usage: !disasm {arch}(x64, x86, x16) {opcodes}**");
 
 
             switch (arch)
