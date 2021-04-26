@@ -150,14 +150,14 @@ namespace paracordbot
             string[] ops = new string[instructions.Length];
             for (int i = 0; i < instructions.Length; i++)
                 ops[i] = string.Concat("", instructions[i].Mnemonic + " " + instructions[i].Operand);
-            await ReplyAsync($"```c\n{string.Join("\n", ops)}```");
+            await ReplyAsync($"```arm\n{string.Join("\n", ops)}```");
         }
 
         public async Task Disasamx86x64x16( ArchitectureMode mode, [Remainder] string hex = null)
         {
             Disassembler.Translator.IncludeBinary = true;
             var disasm = new Disassembler(Utilities.HexStringToByteArray(hex.ToString().Replace("\\x","").Replace("0x","").Replace(" ", "")), mode, 0, true);
-            await ReplyAsync($"```c\n{string.Join("\n", disasm.Disassemble())}```");
+            await ReplyAsync($"```x86asm\n{string.Join("\n", disasm.Disassemble())}```");
         }
 
         public string[] BytesToByteArray(string hex)
