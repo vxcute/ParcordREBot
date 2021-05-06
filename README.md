@@ -2,7 +2,7 @@
 
 About:
 ------
-Paracord Is a Discord Bot That Works As An Assembler & Disassmbler It Also Contains Basic Utils That Will Ease Your RE Process
+Paracord Is a Discord Bot That Works As A Disassmbler It Also Contains Basic Utils That Will Ease Your RE Process
 
 Libraries Used: 
 ---------------
