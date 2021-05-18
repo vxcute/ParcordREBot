@@ -28,7 +28,7 @@ namespace paracordbot
             var builder = new EmbedBuilder()
             .WithTitle("**Paracord RE Bot**")
             
-            .WithDescription("**Hello there :smile:, I am Paracord a Discord Bot which is developed to aid reverse engineers,  I aim to support your RE work as an Disassembler For x86, x16, x64 architectures. If you need more architectures to be supported or any feedback or issue to be reported,  feel free to ping my creator astr0#8214.**")
+            .WithDescription("**Hello there :smile:, I am Paracord a Discord Bot which is developed to aid reverse engineers,  I aim to support your RE work as an Disassembler For x86, x16, x64, arm64 architectures. If you need more architectures to be supported or any feedback or issue to be reported,  feel free to ping my creator astr0#8214.**")
             .WithTimestamp(DateTimeOffset.FromUnixTimeMilliseconds(1618153512638))
             .WithFooter(
              footer =>
@@ -78,7 +78,7 @@ namespace paracordbot
         [Command("cmds")]
         public async Task HelpCommand()
         {
-            await ReplyAsync("**Usage: !disasm {arch}(x64, x86,x16) {opcodes}**");
+            await ReplyAsync("**Usage: !disasm {arch}(x64, x86,x16, arm64) {opcodes}**");
         }
 
         [Command("disasm")]
@@ -93,6 +93,7 @@ namespace paracordbot
                 case "x16": { await Disasamx86x64x16(ArchitectureMode.x86_16, hex); break; }
                 case "x86": { await Disasamx86x64x16(ArchitectureMode.x86_32, hex); break; }
                 case "x64": { await Disasamx86x64x16(ArchitectureMode.x86_64, hex); break; }
+                case "arm64": { string armhex = hex; await DisasmArm64Cmd(armhex); break; }
                 default: { await ReplyAsync("**Unsupported Architecture or You Entered A Wrong One Currently The Bot Supports x64, x86 and x16**"); break; }
             }
        }
