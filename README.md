@@ -2,8 +2,14 @@
 
 About:
 ------
-Paracord Is a Discord Bot That Works As A Disassmbler It Also Contains Basic Utils That Will Ease Your RE Process. The Code Is Badly Written And Just Works Remember I Warned You ! 
+Paracord Is a discord bot that works as a disassmbler it also contains basic utils that will ease your RE process. The code is badly written and just works remember I warned you ! 
 
 Libraries Used: 
 ---------------
-[Discord.Net](https://github.com/discord-net/Discord.Net) [SharpDisasm](https://github.com/spazzarama/SharpDisasm) [Capstone.Net](https://github.com/9ee1/Capstone.NET) [Json.Net](https://www.newtonsoft.com/json)
+[Discord.Net](https://github.com/discord-net/Discord.Net) 
+
+[SharpDisasm](https://github.com/spazzarama/SharpDisasm) 
+
+[Capstone.Net](https://github.com/9ee1/Capstone.NET)
+
+[Json.Net](https://www.newtonsoft.com/json)
